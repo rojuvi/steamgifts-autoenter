@@ -14,6 +14,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Login into DockerHub
+      env:
+        DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+        DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      run: docker login -u $DOCKERHUB_USER  -p 
     - name: Build the Docker image
       run: make build
     - name: Publish the Docker image
