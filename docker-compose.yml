@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  steamgifts-autoenter:
+    image: steamgifts-autoenter:latest
+    env_file:
+      - .env
+    environment:
+      - COOKIES_FILE=/app/persistence/cookies.pkl
+    volumes:
+      - ./volumes/persistence:/app/persistence:rw
