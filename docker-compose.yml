@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   steamgifts-autoenter:
-    image: steamgifts-autoenter:latest
+    image: rojuvi/steamgifts-autoenter:latest
     env_file:
       - .env
     environment:
