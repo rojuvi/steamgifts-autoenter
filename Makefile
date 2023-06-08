@@ -1,4 +1,4 @@
-include .env
+-include .env
 export
 VERSION=$(shell cat VERSION)
 IMAGE_NAME=rojuvi/steamgifts-autoenter
