@@ -1,0 +1,18 @@
+steamgifts-autoenter-base:
+    module: steamgifts_autoenter
+    global: true
+
+steamgifts-autoenter:
+    module: steamgifts_autoenter_app
+    class: SteamgiftsAutoenterAppDaemon
+    dependencies: steamgifts-autoenter-base
+    username: !secret steam_user
+    password: !secret steam_pass
+    cookies_file: cookies.pkl
+    launch_event: steamgifts-autoenter-run
+    scheduled_run:
+        - "00:00:00"
+        - "06:00:00"
+        - "12:00:00"
+        - "18:00:00"
+    blacklist: 
