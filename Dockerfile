@@ -1,7 +1,7 @@
 FROM selenium/standalone-chrome:113.0
 
 WORKDIR /app
-COPY *.py /app/
+COPY src/* /app/
 COPY requirements.txt /app/
 COPY docker_entrypoint.sh /app/
 USER root

@@ -3,3 +3,4 @@
 *.log
 cookies.pkl
 volumes
+**/__pycache__
