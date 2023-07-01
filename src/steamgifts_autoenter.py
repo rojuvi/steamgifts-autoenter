@@ -98,6 +98,12 @@ class SteamgiftsAutoenter():
     
     def enter_giveaways(self):
         self.wait_for_load()
+        self.driver.execute_script("""
+        var element = document.querySelector(".pinned-giveaways__outer-wrap");
+        if (element)
+            element.parentNode.removeChild(element);
+        """)
+        
         not_entered = self.driver.find_elements(By.XPATH, "//div[@class='giveaway__row-inner-wrap']")
         giveaways_hrefs = []
         for giveaway in not_entered:
