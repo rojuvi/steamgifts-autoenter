@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.chrome.service import Service as ChromeService
 from enum import Enum
 from typing import List
 import pickle
@@ -141,7 +142,7 @@ class SteamgiftsAutoenter():
         except TimeoutException as e:
             self.log(f"WARNING! Could not find the enter button for giveaway {giveaway_page}. Skipping...")
             
-    def run(self, headless = True):
+    def run(self, headless = True, chromedriver_path = "/usr/bin/chromedriver"):
         self.log("Start steamgifts auto enter")
         if headless:
             self.log("Going headless")
@@ -150,7 +151,10 @@ class SteamgiftsAutoenter():
             chrome_options.add_argument("--no-sandbox")
             chrome_options.add_argument("--disable-gpu")
             chrome_options.add_argument("--disable-dev-shm-usage")
-            self.driver = webdriver.Chrome(options=chrome_options)
+            if chromedriver_path is not None:
+                self.driver = webdriver.Chrome(options=chrome_options, service=ChromeService(executable_path=chromedriver_path))
+            else:
+                self.driver = webdriver.Chrome(options=chrome_options)
         else:
             self.driver = webdriver.Firefox()
             

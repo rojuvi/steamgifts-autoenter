@@ -11,5 +11,8 @@ cookies_file = os.environ.get("COOKIES_FILE")
 if cookies_file is None or cookies_file == None:
     cookies_file = "cookies.pkl"
 headless = len(sys.argv) > 0 and "--headless" in sys.argv
+chromedriver_path = None
+if "--chromedriver_path" in sys.argv:
+    chromedriver_path=sys.argv["--chromedriver_path"]
     
-SteamgiftsAutoenter(username, password, cookies_file, blacklist).run(headless=headless)
+SteamgiftsAutoenter(username, password, cookies_file, blacklist).run(headless=headless, chromedriver_path=chromedriver_path)
